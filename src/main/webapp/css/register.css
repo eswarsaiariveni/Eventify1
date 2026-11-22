@@ -1,0 +1,594 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #7c5cff;
+    --secondary: #c850ff;
+    --pink: #ff4f9a;
+    --text: #ffffff;
+    --muted: #a8aec7;
+    --card: rgba(20, 22, 45, 0.72);
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    overflow: hidden;
+
+    background:
+            radial-gradient(
+                    circle at 15% 20%,
+                    rgba(124, 92, 255, 0.28),
+                    transparent 28%
+            ),
+            radial-gradient(
+                    circle at 85% 80%,
+                    rgba(255, 79, 154, 0.22),
+                    transparent 30%
+            ),
+            linear-gradient(
+                    135deg,
+                    #050711,
+                    #0b0d1d 45%,
+                    #090611
+            );
+}
+
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: float 8s infinite ease-in-out;
+}
+
+.orb.one {
+    width: 260px;
+    height: 260px;
+    background: rgba(124, 92, 255, 0.16);
+    top: -80px;
+    left: -70px;
+}
+
+.orb.two {
+    width: 220px;
+    height: 220px;
+    background: rgba(255, 79, 154, 0.14);
+    right: -60px;
+    top: 20%;
+    animation-delay: 2s;
+}
+
+.orb.three {
+    width: 180px;
+    height: 180px;
+    background: rgba(200, 80, 255, 0.12);
+    bottom: -60px;
+    left: 30%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(30px, -25px) scale(1.08);
+    }
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+    position: relative;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.register-wrapper {
+    width: min(1050px, 100%);
+
+    display: grid;
+    grid-template-columns: 1fr 430px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+
+    box-shadow:
+            0 40px 100px rgba(0, 0, 0, 0.55),
+            inset 0 1px rgba(255, 255, 255, 0.08);
+
+    animation: appear 0.8s ease;
+}
+
+/* =========================
+   LEFT GRAPHICAL SECTION
+========================= */
+
+.visual-section {
+    min-height: 620px;
+
+    padding: 55px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: relative;
+
+    background:
+            radial-gradient(
+                    circle at 20% 30%,
+                    rgba(124, 92, 255, 0.25),
+                    transparent 35%
+            ),
+            linear-gradient(
+                    145deg,
+                    rgba(124, 92, 255, 0.12),
+                    rgba(255, 79, 154, 0.05)
+            );
+}
+
+/* Logo */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+            );
+
+    box-shadow:
+            0 10px 30px rgba(124, 92, 255, 0.35);
+
+    font-size: 20px;
+}
+
+/* Hero text */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h2 {
+    max-width: 500px;
+
+    font-size: clamp(40px, 5vw, 62px);
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 22px;
+}
+
+.gradient-text {
+    background:
+            linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #9d8cff,
+                    #ff7db5
+            );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+    max-width: 470px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* =========================
+   TICKET GRAPHIC
+========================= */
+
+.ticket {
+    position: absolute;
+
+    width: 260px;
+    height: 140px;
+
+    right: 60px;
+    top: 250px;
+
+    border-radius: 20px;
+
+    transform: rotate(-8deg);
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #7c5cff,
+                    #c850ff
+            );
+
+    box-shadow:
+            0 30px 60px rgba(124, 92, 255, 0.35);
+
+    animation: ticketFloat 5s infinite ease-in-out;
+}
+
+.ticket::before,
+.ticket::after {
+    content: "";
+
+    position: absolute;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #090b18;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+.ticket::before {
+    left: -15px;
+}
+
+.ticket::after {
+    right: -15px;
+}
+
+.ticket-content {
+    padding: 22px;
+}
+
+.ticket-title {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.ticket-subtitle {
+    margin-top: 8px;
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+.ticket-line {
+    position: absolute;
+
+    bottom: 20px;
+    left: 22px;
+    right: 22px;
+
+    border-top: 1px dashed rgba(255,255,255,0.5);
+}
+
+@keyframes ticketFloat {
+
+    0%, 100% {
+        transform: rotate(-8deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(-5deg) translateY(-15px);
+    }
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    display: flex;
+    gap: 30px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    color: #c5c9dc;
+    font-size: 12px;
+}
+
+/* =========================
+   FORM SECTION
+========================= */
+
+.form-section {
+    padding: 55px 42px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background:
+            rgba(7, 9, 22, 0.55);
+
+    border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+.form-section h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+
+    letter-spacing: -1px;
+}
+
+.form-subtitle {
+    color: var(--muted);
+    font-size: 13px;
+
+    margin-bottom: 32px;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.input-box {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.input-box label {
+    display: block;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #cdd1e3;
+
+    margin-bottom: 8px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 52px;
+
+    padding: 0 16px;
+
+    border-radius: 13px;
+
+    outline: none;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    background: rgba(255,255,255,0.045);
+
+    color: white;
+
+    font-size: 13px;
+
+    transition: all 0.3s ease;
+}
+
+.input-box input::placeholder {
+    color: #686e87;
+}
+
+.input-box input:focus {
+    border-color: var(--primary);
+
+    background: rgba(124,92,255,0.07);
+
+    box-shadow:
+            0 0 0 4px rgba(124,92,255,0.1),
+            0 8px 25px rgba(124,92,255,0.08);
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+    width: 100%;
+    height: 53px;
+
+    margin-top: 8px;
+
+    border: none;
+    border-radius: 13px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    background:
+            linear-gradient(
+                    100deg,
+                    #6955ff,
+                    #a44dff,
+                    #ff4f9a
+            );
+
+    background-size: 200% 100%;
+
+    box-shadow:
+            0 15px 30px rgba(124,92,255,0.25);
+
+    transition: all 0.4s ease;
+}
+
+button:hover {
+    background-position: 100% 0;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+            0 20px 40px rgba(124,92,255,0.35);
+}
+
+button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* =========================
+   LOGIN LINK
+========================= */
+
+.login-link {
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: #777e98;
+
+    font-size: 12px;
+}
+
+.login-link a {
+    color: #a695ff;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    margin-left: 4px;
+}
+
+.login-link a:hover {
+    color: white;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .register-wrapper {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
+    .visual-section {
+        min-height: 350px;
+        padding: 35px;
+    }
+
+    .hero-content h2 {
+        font-size: 42px;
+    }
+
+    .ticket {
+        display: none;
+    }
+
+    .features {
+        margin-top: 35px;
+    }
+
+    .form-section {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.08);
+    }
+}
+
+@media (max-width: 500px) {
+
+    .page {
+        padding: 15px;
+    }
+
+    .visual-section {
+        padding: 28px;
+    }
+
+    .form-section {
+        padding: 35px 25px;
+    }
+
+    .hero-content h2 {
+        font-size: 35px;
+    }
+
+    .features {
+        flex-direction: column;
+        gap: 12px;
+    }
+}

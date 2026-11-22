@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Eventify</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="dashboard.html" class="logo">
+        <span class="logo-icon">✦</span>
+        Eventify<span class="logo-dot">.</span>
+    </a>
+
+    <div class="nav-actions">
+        <a href="dashboard.html" class="back-link">← Back to Events</a>
+        <a href="logout" class="logout-link">Logout ↗</a>
+    </div>
+</header>
+
+<main class="profile-page">
+
+    <section class="welcome-section">
+        <div>
+            <span class="eyebrow">YOUR PERSONAL SPACE</span>
+            <h1>My <span>Profile</span></h1>
+            <p>Manage your account and keep your event journey in one place.</p>
+        </div>
+        <div class="welcome-decoration">✦</div>
+    </section>
+
+    <div id="loadingMessage" class="message-card">
+        Loading your profile...
+    </div>
+
+    <div id="errorMessage" class="message-card error-message" hidden>
+        <h3>Unable to load your profile</h3>
+        <p id="errorText">Please log in again.</p>
+        <a href="login.html" class="primary-button">Go to Login</a>
+    </div>
+
+    <div id="profileContent" hidden>
+
+        <section class="profile-card">
+            <div class="cover-area">
+                <div class="cover-circle circle-one"></div>
+                <div class="cover-circle circle-two"></div>
+                <span class="cover-star">✦</span>
+            </div>
+
+            <div class="profile-summary">
+                <div class="large-avatar" id="profileAvatar">U</div>
+
+                <div class="summary-info">
+                    <span class="account-badge">
+                        <span class="status-dot"></span>
+                        ACCOUNT PROFILE
+                    </span>
+                    <h2 id="userName">User</h2>
+                    <p id="summaryEmail">user@example.com</p>
+                </div>
+
+                <div class="verified-badge">
+                    <span>✓</span> Logged in
+                </div>
+            </div>
+
+            <div class="profile-divider"></div>
+
+            <div class="section-title">
+                <div>
+                    <span class="eyebrow">ACCOUNT DETAILS</span>
+                    <h3>Personal Information</h3>
+                </div>
+                <span class="lock-label">🔒 Private</span>
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-item">
+                    <div class="detail-icon purple-icon">👤</div>
+                    <div class="detail-text">
+                        <span>Full Name</span>
+                        <strong id="detailName">—</strong>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon pink-icon">✉</div>
+                    <div class="detail-text">
+                        <span>Email Address</span>
+                        <strong id="detailEmail">—</strong>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon green-icon">🛡</div>
+                    <div class="detail-text">
+                        <span>Account Status</span>
+                        <strong class="active-status">Active</strong>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon orange-icon">🎟</div>
+                    <div class="detail-text">
+                        <span>Member Of</span>
+                        <strong>Eventify Community</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-note">
+                <span>💡</span>
+                <p>Your account information is displayed from your current login session.</p>
+            </div>
+        </section>
+
+        <section class="quick-actions">
+            <div class="quick-action-heading">
+                <span class="eyebrow">QUICK ACCESS</span>
+                <h3>Your Eventify</h3>
+            </div>
+
+            <a href="dashboard.html#events" class="action-card">
+                <div class="action-icon purple-icon">🎫</div>
+                <div>
+                    <strong>Explore Events</strong>
+                    <p>Discover your next experience.</p>
+                </div>
+                <span class="action-arrow">↗</span>
+            </a>
+
+            <a href="dashboard.html#events" class="action-card">
+                <div class="action-icon pink-icon">✨</div>
+                <div>
+                    <strong>Find Something New</strong>
+                    <p>Browse concerts, sports and workshops.</p>
+                </div>
+                <span class="action-arrow">↗</span>
+            </a>
+
+            <a href="logout" class="action-card logout-card">
+                <div class="action-icon red-icon">↪</div>
+                <div>
+                    <strong>Logout</strong>
+                    <p>Securely end your current session.</p>
+                </div>
+                <span class="action-arrow">↗</span>
+            </a>
+        </section>
+
+        <section class="booking-placeholder">
+            <div class="booking-icon">🎟️</div>
+            <div>
+                <span class="eyebrow">COMING NEXT</span>
+                <h3>Your Booking History</h3>
+                <p>Your upcoming events and ticket history can appear here once the booking system is connected to MySQL.</p>
+            </div>
+        </section>
+
+    </div>
+
+</main>
+
+<footer class="footer">
+    <a href="dashboard.html" class="logo">
+        <span class="logo-icon">✦</span>
+        Eventify<span class="logo-dot">.</span>
+    </a>
+    <p>Discover events. Create memories.</p>
+    <span>© 2026 Eventify</span>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded",   `function () {
+        const loading = document.getElementById("loadingMessage");
+        const content = document.getElementById("profileContent");
+        const errorBox = document.getElementById("errorMessage");
+        const errorText = document.getElementById("errorText");
+
+        fetch("profile-data", {
+            method: "GET",
+            credentials: "same-origin",
+            headers: { "Accept": "application/json" }
+        })
+            .then(function (response) {
+                if (response.status === 401) {
+                    window.location.replace("login.html");
+                    throw new Error("Your session has expired. Please log in.");
+                }
+
+                if (!response.ok) {
+                    throw new Error("Could not retrieve your profile.");
+                }
+
+                return response.json();
+            })
+            .then(function (user) {
+                const name = (user.name || "User").trim() || "User";
+                const email = user.email || "Not available";
+                const initial = name.charAt(0).toUpperCase();
+
+                document.getElementById("profileAvatar").textContent = initial;
+                document.getElementById("userName").textContent = name;
+                document.getElementById("summaryEmail").textContent = email;
+                document.getElementById("detailName").textContent = name;
+                document.getElementById("detailEmail").textContent = email;
+
+                loading.hidden = true;
+                content.hidden = false;
+            })
+            .catch(function (error) {
+                loading.hidden = true;
+
+                if (error.message.includes("session has expired")) {
+                    return;
+                }
+
+                errorText.textContent =
+                    "Please check that ProfileServlet is running and that you are logged in.";
+
+                errorBox.hidden = false;
+                console.error("Profile error:", error);
+            });
+    });
+</script>
+
+</body>
+</html>

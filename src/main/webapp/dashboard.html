@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventify | Discover Events</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+
+    <a href="dashboard.html" class="logo">
+        <span class="logo-icon">✦</span>
+        Eventify<span class="logo-dot">.</span>
+    </a>
+
+    <nav class="nav-links">
+        <a href="dashboard.html" class="active">Discover</a>
+        <a href="#events">Explore Events</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <div class="nav-actions">
+        <a href="#events" class="nav-explore">Find Events ↗</a>
+
+        <!-- Dynamic User Profile -->
+        <div class="profile-container">
+
+            <button class="user-avatar"
+                    id="profileButton"
+                    type="button"
+                    aria-label="Open profile menu"
+                    aria-expanded="false">
+                <span id="profileInitial">U</span>
+            </button>
+
+            <div class="profile-dropdown" id="profileDropdown" hidden>
+
+                <div class="profile-header">
+                    <div class="profile-avatar" id="dropdownInitial">U</div>
+
+                    <div class="profile-user-details">
+                        <h3 id="profileName">Loading...</h3>
+                        <p id="profileEmail">Loading email...</p>
+                    </div>
+                </div>
+
+                <div class="profile-divider"></div>
+
+                <a href="profile.html" class="profile-menu-item">
+                    <span>👤</span> My Profile
+                </a>
+
+                <a href="#events" class="profile-menu-item">
+                    <span>🎟️</span> Explore Events
+                </a>
+
+                <a href="logout" class="profile-menu-item logout-item">
+                    <span>↪</span> Logout
+                </a>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+<main>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-label">
+                <span class="live-dot"></span>
+                YOUR NEXT EXPERIENCE STARTS HERE
+            </span>
+
+            <h1>
+                Discover moments.<br>
+                <span>Make memories.</span>
+            </h1>
+
+            <p class="hero-description">
+                Find amazing events, connect with people, and experience
+                the things you love. Your next unforgettable moment is waiting.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#events" class="primary-btn">
+                    Explore Events <span>→</span>
+                </a>
+
+                <a href="#about" class="secondary-btn">Learn More</a>
+            </div>
+
+            <div class="hero-stats">
+                <div>
+                    <h3>12+</h3>
+                    <p>Exciting Events</p>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div>
+                    <h3>8+</h3>
+                    <p>Categories</p>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div>
+                    <h3>100%</h3>
+                    <p>Fun Guaranteed</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="hero-glow"></div>
+
+            <img
+                    class="hero-image"
+                    src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1000&q=85"
+                    alt="People enjoying a live music event">
+
+            <div class="floating-card floating-card-top">
+                <span class="floating-icon">🎵</span>
+                <div>
+                    <strong>Live Experiences</strong>
+                    <small>Feel the energy</small>
+                </div>
+            </div>
+
+            <div class="floating-card floating-card-bottom">
+                <span class="floating-icon">🎟️</span>
+                <div>
+                    <strong>Your next adventure</strong>
+                    <small>Starts with one click</small>
+                </div>
+                <span class="floating-star">✦</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EVENTS SECTION ================= -->
+    <section class="events-section" id="events">
+
+        <div class="section-heading">
+            <div>
+                <span class="section-label">FIND YOUR EXPERIENCE</span>
+                <h2>Explore <span>Events</span></h2>
+                <p>From live concerts to exciting workshops, find something you love.</p>
+            </div>
+
+            <div class="event-count">
+                <span class="count-dot"></span>
+                <span id="eventCount">12 events</span>
+            </div>
+        </div>
+
+
+        <!-- SEARCH -->
+        <div class="search-container">
+            <span class="search-icon">⌕</span>
+
+            <input
+                    type="search"
+                    id="eventSearch"
+                    placeholder="Search events, categories or locations..."
+                    aria-label="Search events">
+
+            <span class="search-hint">Search</span>
+        </div>
+
+
+        <!-- CATEGORY FILTERS -->
+        <div class="category-list">
+
+            <button class="category-btn active" data-category="All">✦ All Events</button>
+            <button class="category-btn" data-category="Concert">🎵 Concert</button>
+            <button class="category-btn" data-category="Sports">⚽ Sports</button>
+            <button class="category-btn" data-category="Festival">🎉 Festival</button>
+            <button class="category-btn" data-category="Technology">💻 Technology</button>
+            <button class="category-btn" data-category="Entertainment">🎤 Entertainment</button>
+            <button class="category-btn" data-category="Art">🎨 Art</button>
+            <button class="category-btn" data-category="Workshop">📚 Workshop</button>
+            <button class="category-btn" data-category="Gaming">🎮 Gaming</button>
+            <button class="category-btn" data-category="Business">💼 Business</button>
+
+        </div>
+
+
+        <!-- EVENT CARDS -->
+        <div class="event-grid" id="eventGrid">
+
+            <!-- 1. Live Music Festival -->
+            <article class="event-card" data-category="Concert"
+                     data-search="live music festival concert vijayawada music">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800&q=80"
+                         alt="Live music concert" loading="lazy">
+                    <span class="event-tag">Concert</span>
+                    <span class="event-date-badge">28 NOV</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">MUSIC & ENTERTAINMENT</span>
+                    <h3>Live Music Festival</h3>
+                    <p class="event-description">Experience an unforgettable night of music and energy.</p>
+                    <div class="event-details">
+                        <span>📅 28 Nov 2026</span>
+                        <span>📍 Vijayawada</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹799</strong></div>
+                        <button class="book-btn" data-event="Live Music Festival" data-price="799">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- 2. Championship Night -->
+            <article class="event-card" data-category="Sports"
+                     data-search="championship night sports football cricket tournament">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80"
+                         alt="Sports championship" loading="lazy">
+                    <span class="event-tag">Sports</span>
+                    <span class="event-date-badge">05 DEC</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">SPORTS & ACTION</span>
+                    <h3>Championship Night</h3>
+                    <p class="event-description">Feel the excitement of a thrilling sports experience.</p>
+                    <div class="event-details">
+                        <span>📅 05 Dec 2026</span>
+                        <span>📍 Guntur</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹499</strong></div>
+                        <button class="book-btn" data-event="Championship Night" data-price="499">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- 3. Festival of Lights -->
+            <article class="event-card" data-category="Festival"
+                     data-search="festival of lights festival celebration cultural">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80"
+                         alt="Festival celebration" loading="lazy">
+                    <span class="event-tag">Festival</span>
+                    <span class="event-date-badge">12 DEC</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">CULTURE & CELEBRATION</span>
+                    <h3>Festival of Lights</h3>
+                    <p class="event-description">Celebrate colourful traditions, lights, food and culture.</p>
+                    <div class="event-details">
+                        <span>📅 12 Dec 2026</span>
+                        <span>📍 Vijayawada</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹599</strong></div>
+                        <button class="book-btn" data-event="Festival of Lights" data-price="599">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- 4. Future Tech Summit -->
+            <article class="event-card" data-category="Technology"
+                     data-search="future tech summit technology innovation AI developers">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80"
+                         alt="Technology conference" loading="lazy">
+                    <span class="event-tag">Technology</span>
+                    <span class="event-date-badge">19 DEC</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">TECH & INNOVATION</span>
+                    <h3>Future Tech Summit</h3>
+                    <p class="event-description">Explore AI, emerging technologies and future innovations.</p>
+                    <div class="event-details">
+                        <span>📅 19 Dec 2026</span>
+                        <span>📍 Hyderabad</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹999</strong></div>
+                        <button class="book-btn" data-event="Future Tech Summit" data-price="999">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- 5. Stand-up Comedy Night -->
+            <article class="event-card" data-category="Entertainment"
+                     data-search="stand-up comedy night entertainment comedian laughter">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&w=800&q=80"
+                         alt="Comedy performance" loading="lazy">
+                    <span class="event-tag">Entertainment</span>
+                    <span class="event-date-badge">26 DEC</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">COMEDY & LAUGHTER</span>
+                    <h3>Stand-up Comedy Night</h3>
+                    <p class="event-description">Enjoy hilarious performances and a night full of laughter.</p>
+                    <div class="event-details">
+                        <span>📅 26 Dec 2026</span>
+                        <span>📍 Vijayawada</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹399</strong></div>
+                        <button class="book-btn" data-event="Stand-up Comedy Night" data-price="399">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- 6. Creative Art Exhibition -->
+            <article class="event-card" data-category="Art"
+                     data-search="creative art exhibition painting artists gallery">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80"
+                         alt="Art exhibition" loading="lazy">
+                    <span class="event-tag">Art</span>
+                    <span class="event-date-badge">03 JAN</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">ART & CREATIVITY</span>
+                    <h3>Creative Art Exhibition</h3>
+                    <p class="event-description">Discover creative artwork, paintings and inspiring ideas.</p>
+                    <div class="event-details">
+                        <span>📅 03 Jan 2027</span>
+                        <span>📍 Hyderabad</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹299</strong></div>
+                        <button class="book-btn" data-event="Creative Art Exhibition" data-price="299">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- 7. Street Food Carnival -->
+            <article class="event-card" data-category="Festival"
+                     data-search="street food carnival food festival dishes snacks">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80"
+                         alt="Street food" loading="lazy">
+                    <span class="event-tag">Festival</span>
+                    <span class="event-date-badge">10 JAN</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">FOOD & FLAVOURS</span>
+                    <h3>Street Food Carnival</h3>
+                    <p class="event-description">Taste delicious street food and explore new flavours.</p>
+                    <div class="event-details">
+                        <span>📅 10 Jan 2027</span>
+                        <span>📍 Vijayawada</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹249</strong></div>
+                        <button class="book-btn" data-event="Street Food Carnival" data-price="249">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- 8. Photography Masterclass -->
+            <article class="event-card" data-category="Workshop"
+                     data-search="photography masterclass workshop camera creative learning">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=800&q=80"
+                         alt="Photography workshop" loading="lazy">
+                    <span class="event-tag">Workshop</span>
+                    <span class="event-date-badge">17 JAN</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">LEARN & CREATE</span>
+                    <h3>Photography Masterclass</h3>
+                    <p class="event-description">Learn photography techniques and creative skills.</p>
+                    <div class="event-details">
+                        <span>📅 17 Jan 2027</span>
+                        <span>📍 Hyderabad</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹699</strong></div>
+                        <button class="book-btn" data-event="Photography Masterclass" data-price="699">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- 9. Dance & Culture Fest -->
+            <article class="event-card" data-category="Festival"
+                     data-search="dance culture fest traditional dance performance festival">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=800&q=80"
+                         alt="Dance and culture festival" loading="lazy">
+                    <span class="event-tag">Festival</span>
+                    <span class="event-date-badge">24 JAN</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">DANCE & CULTURE</span>
+                    <h3>Dance & Culture Fest</h3>
+                    <p class="event-description">Celebrate music, dance and cultural performances.</p>
+                    <div class="event-details">
+                        <span>📅 24 Jan 2027</span>
+                        <span>📍 Guntur</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹449</strong></div>
+                        <button class="book-btn" data-event="Dance & Culture Fest" data-price="449">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- 10. Ultimate Gaming Arena -->
+            <article class="event-card" data-category="Gaming"
+                     data-search="ultimate gaming arena esports games tournament">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
+                         alt="Gaming arena" loading="lazy">
+                    <span class="event-tag">Gaming</span>
+                    <span class="event-date-badge">31 JAN</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">GAMING & ESPORTS</span>
+                    <h3>Ultimate Gaming Arena</h3>
+                    <p class="event-description">Compete with gamers and enjoy exciting gaming challenges.</p>
+                    <div class="event-details">
+                        <span>📅 31 Jan 2027</span>
+                        <span>📍 Hyderabad</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹599</strong></div>
+                        <button class="book-btn" data-event="Ultimate Gaming Arena" data-price="599">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- 11. Startup Networking Meet -->
+            <article class="event-card" data-category="Business"
+                     data-search="startup networking meet business entrepreneurs founders">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
+                         alt="Business networking" loading="lazy">
+                    <span class="event-tag">Business</span>
+                    <span class="event-date-badge">07 FEB</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">BUSINESS & NETWORKING</span>
+                    <h3>Startup Networking Meet</h3>
+                    <p class="event-description">Meet entrepreneurs, share ideas and build connections.</p>
+                    <div class="event-details">
+                        <span>📅 07 Feb 2027</span>
+                        <span>📍 Vijayawada</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹799</strong></div>
+                        <button class="book-btn" data-event="Startup Networking Meet" data-price="799">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- 12. City Marathon Challenge -->
+            <article class="event-card" data-category="Sports"
+                     data-search="city marathon challenge sports running fitness race">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80"
+                         alt="Marathon runners" loading="lazy">
+                    <span class="event-tag">Sports</span>
+                    <span class="event-date-badge">14 FEB</span>
+                </div>
+                <div class="event-info">
+                    <span class="event-category">FITNESS & ADVENTURE</span>
+                    <h3>City Marathon Challenge</h3>
+                    <p class="event-description">Challenge yourself, stay active and cross the finish line.</p>
+                    <div class="event-details">
+                        <span>📅 14 Feb 2027</span>
+                        <span>📍 Vijayawada</span>
+                    </div>
+                    <div class="event-card-footer">
+                        <div class="event-price"><small>Starting at</small><strong>₹199</strong></div>
+                        <button class="book-btn" data-event="City Marathon Challenge" data-price="199">Book Now</button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+
+        <!-- NO SEARCH RESULTS -->
+        <div id="noEvents" class="no-events" hidden>
+            <div class="no-events-icon">🔎</div>
+            <h3>No events found</h3>
+            <p>Try another search term or select a different category.</p>
+            <button id="resetFilters" class="primary-btn">Show All Events</button>
+        </div>
+
+    </section>
+
+
+    <!-- ================= CTA SECTION ================= -->
+    <section class="cta-section" id="about">
+
+        <div class="cta-content">
+            <span class="section-label">MAKE YOUR NEXT MEMORY</span>
+
+            <h2>
+                Life is better when
+                <span>experienced together.</span>
+            </h2>
+
+            <p>
+                Find your people, discover new passions, and make every moment count.
+            </p>
+
+            <a href="#events" class="primary-btn">
+                Find Your Next Event →
+            </a>
+        </div>
+
+        <div class="cta-decoration">✦</div>
+
+    </section>
+
+    <!-- Live Music Festival -->
+    <button class="book-btn"
+            data-event-id="1">
+        Book Now
+    </button>
+
+    <!-- Tech Conference 2026 -->
+    <button class="book-btn"
+            data-event-id="2">
+        Book Now
+    </button>
+
+    <!-- Stand-up Comedy Night -->
+    <button class="book-btn"
+            data-event-id="3">
+        Book Now
+    </button>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+
+    <a href="dashboard.html" class="logo">
+        <span class="logo-icon">✦</span>
+        Eventify<span class="logo-dot">.</span>
+    </a>
+
+    <p>Discover events. Create memories.</p>
+
+    <span>© 2026 Eventify. All rights reserved.</span>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        /* ---------- EVENT SEARCH AND FILTER ---------- */
+
+        const searchInput = document.getElementById("eventSearch");
+        const categoryButtons = document.querySelectorAll(".category-btn");
+        const eventCards = document.querySelectorAll(".event-card");
+        const eventCount = document.getElementById("eventCount");
+        const noEvents = document.getElementById("noEvents");
+        const resetButton = document.getElementById("resetFilters");
+
+        let selectedCategory = "All";
+
+        function filterEvents() {
+            const searchText = searchInput.value.trim().toLowerCase();
+            let visibleCount = 0;
+
+            eventCards.forEach(function (card) {
+                const category = card.dataset.category;
+
+                const searchData = (
+                    (card.dataset.search || "") + " " + card.innerText
+                ).toLowerCase();
+
+                const matchesCategory =
+                    selectedCategory === "All" ||
+                    category === selectedCategory;
+
+                const matchesSearch = searchData.includes(searchText);
+                const shouldShow = matchesCategory && matchesSearch;
+
+                card.hidden = !shouldShow;
+
+                if (shouldShow) {
+                    visibleCount++;
+                }
+            });
+
+            eventCount.textContent =
+                visibleCount + (visibleCount === 1 ? " event" : " events");
+
+            noEvents.hidden = visibleCount !== 0;
+        }
+
+        categoryButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                categoryButtons.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+
+                button.classList.add("active");
+                selectedCategory = button.dataset.category;
+
+                filterEvents();
+            });
+        });
+
+        searchInput.addEventListener("input", filterEvents);
+
+        resetButton.addEventListener("click", function () {
+            selectedCategory = "All";
+            searchInput.value = "";
+
+            categoryButtons.forEach(function (button) {
+                button.classList.toggle(
+                    "active",
+                    button.dataset.category === "All"
+                );
+            });
+
+            filterEvents();
+        });
+
+
+        /* ---------- LOAD LOGGED-IN USER PROFILE ---------- */
+
+        const profileButton = document.getElementById("profileButton");
+        const profileDropdown = document.getElementById("profileDropdown");
+        const profileInitial = document.getElementById("profileInitial");
+        const dropdownInitial = document.getElementById("dropdownInitial");
+        const profileName = document.getElementById("profileName");
+        const profileEmail = document.getElementById("profileEmail");
+
+        fetch("profile-data")
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("Unable to load profile");
+                }
+
+                return response.json();
+            })
+            .then(function (user) {
+                const name = (user.name || "User").trim();
+                const initial = name.charAt(0).toUpperCase() || "U";
+
+                profileInitial.textContent = initial;
+                dropdownInitial.textContent = initial;
+                profileName.textContent = name;
+                profileEmail.textContent = user.email || "";
+            })
+            .catch(function (error) {
+                console.error("Profile loading error:", error);
+
+                profileInitial.textContent = "U";
+                dropdownInitial.textContent = "U";
+                profileName.textContent = "User";
+                profileEmail.textContent = "Please log in";
+            });
+
+
+        /* ---------- PROFILE DROPDOWN ---------- */
+
+        profileButton.addEventListener("click", function (event) {
+            event.stopPropagation();
+
+            const isOpening = profileDropdown.hidden;
+
+            profileDropdown.hidden = !isOpening;
+
+            profileButton.setAttribute(
+                "aria-expanded",
+                String(isOpening)
+            );
+        });
+
+        profileDropdown.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+
+        document.addEventListener("click", function () {
+            profileDropdown.hidden = true;
+            profileButton.setAttribute("aria-expanded", "false");
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                profileDropdown.hidden = true;
+                profileButton.setAttribute("aria-expanded", "false");
+                profileButton.focus();
+            }
+        });
+
+
+        /* ---------- DEMO BOOKING BUTTONS ---------- */
+
+        document.querySelectorAll(".book-btn").forEach(function (button) {
+            button.addEventListener("click", function () {
+                const eventName = button.dataset.event;
+                const price = button.dataset.price;
+
+                const confirmed = window.confirm(
+                    "Event: " + eventName +
+                    "\nTicket price: ₹" + price +
+                    "\n\nThis is a demo booking. Continue?"
+                );
+
+                if (confirmed) {
+                    window.alert(
+                        "Thank you for your interest in " + eventName +
+                        "!\nThe booking and payment system needs to be connected next."
+                    );
+                }
+            });
+        });
+
+
+        filterEvents();
+
+    });
+</script>
+
+</body>
+</html>
